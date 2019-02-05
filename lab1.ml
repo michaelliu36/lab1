@@ -101,7 +101,7 @@ appropriate OCaml expression to assign the value to the variable
 exercise1 below.
 ......................................................................*)
 
-let exercise3 () = failwith "exercise3 not implemented" ;;
+let exercise3 () = ~- ( 5 - 3 ) ;;
 
 (* Hint: The OCaml concrete expression
 
@@ -113,10 +113,18 @@ does *not* correspond to the abstract syntax above.
 Exercise 4: Draw the tree that the concrete syntax "~- 5 - 3" does
 correspond to. Check it with a member of the course staff if you'd
 like.
-......................................................................*)
+......................................................................
 
+      -
+      ^
+     / \
+    /   \
+   ~-     3
+   |
+   |
+   5
 
-(*......................................................................
+......................................................................
 Exercise 5: Associativity plays a role in cases when two operators
 used in the concrete syntax have the same precedence. For instance,
 the concrete expression 2 + 1 + 0 might have abstract syntax as
@@ -136,6 +144,12 @@ evaluates to two different results dependent on the associativity of
 the operator. Use this expression to determine the associativity of
 the operator. Check your answer with a member of the course staff if
 you'd like.
+
+(2. ** 3.) ** 4.
+
+vs.
+
+2. ** (3. ** 4.)
 ......................................................................*)
 
 (*======================================================================
@@ -148,25 +162,21 @@ expressions below? Test your solution by uncommenting the examples
 error is generated.
 ......................................................................*)
 
-(*  <--- After you've replaced the ???s, remove this start of comment line
+let exercise6a : int = 42 ;;
 
-let exercise6a : ??? = 42 ;;
-
-let exercise6b : ??? =
+let exercise6b : string =
   let greet y = "Hello " ^ y
   in greet "World!";;
 
-let exercise6c : ??? =
+let exercise6c : float =
   fun x -> x +. 11.1 ;;
 
-let exercise6d : ??? =
+let exercise6d : bool =
   fun x -> x < x + 1 ;;
 
-let exercise6e : ??? =
+let exercise6e : int =
   fun x -> fun y -> x + int_of_float y ;;
 
-
-and remove this whole end of comment line too. ---->  *)
 
 (*======================================================================
 Part 3: First-order functional programming
@@ -183,7 +193,7 @@ to implement square properly.
 
 Test out your implementation of square by modifying the template
 code below to define exercise7 to be the square function applied
-to the list containing the elements 5. You'll want to
+to the list containing the element 5. You'll want to
 replace the "0" with the correct function call.
 
 Thorough testing is important in all your work, and we hope to impart
@@ -197,9 +207,9 @@ functions in the lab to get some practice with automated unit testing.
 ......................................................................*)
 
 let square (x : int) : int  =
-  failwith "square not implemented" ;;
+  x * x ;;
 
-let exercise7 = 0 ;;
+let exercise7 = square 5 ;;
 
 (*......................................................................
 Exercise 8: Define a function say_hello that, given a name, creates a
