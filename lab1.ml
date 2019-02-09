@@ -291,7 +291,7 @@ let computus_month (year : int) : int =
   (computus_helper year) / 31 ;;
 
 let computus_day (year : int) : int =
-  1 + computus_helper (year mod 31) ;;
+  1 + ((computus_helper year) mod 31) ;;
 
 (*======================================================================
 Part 4: Utilizing recursion
